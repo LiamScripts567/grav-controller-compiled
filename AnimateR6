@@ -1,5 +1,5 @@
 return function(script)
-    Instance.new("BoolValue", script.Parent).Name = "Loaded"
+
     local Figure = script.Parent
     local Torso = Figure:WaitForChild("Torso")
     local RightShoulder = Torso:WaitForChild("Right Shoulder")
