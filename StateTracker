@@ -19,7 +19,7 @@ local STATEMAP = {
 local StateTracker = {}
 StateTracker.__index = StateTracker
 
-function StateTracker.new(humanoid, soundState)
+function StateTracker.new(humanoid) -- soundState)
     local self = setmetatable({}, StateTracker)
     
     self.Humanoid = humanoid
@@ -30,7 +30,7 @@ function StateTracker.new(humanoid, soundState)
     self.Jumped = false
     self.JumpTick = tick()
     
-    self.SoundState = soundState
+    --self.SoundState = soundState
     
     self._ChangedEvent = Instance.new("BindableEvent")
     self.Changed = self._ChangedEvent.Event
@@ -82,7 +82,7 @@ function StateTracker:OnStep(gravityUp, grounded, isMoving)
     if (oldState ~= newState or (SPEED[newState] and math.abs(oldSpeed - newSpeed) > EPSILON)) then
         self.State = newState
         self.Speed = newSpeed
-        self.SoundState:Fire(STATEMAP[newState])
+        --self.SoundState:Fire(STATEMAP[newState])
         self._ChangedEvent:Fire(self.State, self.Speed)
     end
 end
